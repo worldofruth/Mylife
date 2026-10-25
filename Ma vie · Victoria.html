@@ -1,0 +1,982 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Ma vie · Victoria</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Hanken+Grotesk:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap">
+<style>
+/* Layout : un agenda relié posé sur du velours bordeaux. Tranche en satin noir à gauche avec les onglets, la page bordeaux à droite, éclairée d'une lumière dorée. Les notes en soie ivoire (avec scotch) portent ce que j'écris et coche ; les cartes en satin noir portent mes versets. Le soir en sombre, le jour en clair : le réglage de l'appareil décide. */
+:root{
+  color-scheme:dark;
+  --bg:#130709; --surface:#220F14; --raised:#3A1820; --spine:#0A0607; --noir:#0B0708;
+  --cream:#F5EFE9; --muted:#C2ACAB; --line:#45202A;
+  --paper:#F3EEE8; --paper-ink:#2A1A1D; --paper-soft:#8A7470; --paper-line:#E2D6CE;
+  --rose:#E4B6BE; --rose-ink:#9C4459; --bordeaux:#6E1A28; --gold:#EE9DBB;
+  --f-display:"Bodoni Moda","Bodoni 72",Didot,Georgia,serif;
+  --f-body:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-hand:"Caveat","Bradley Hand","Segoe Print",cursive;
+  --gold-soft:#E8CFC6; --panel:rgba(34,15,20,.72); --now:rgba(238,157,187,.13);
+  --app-bg:radial-gradient(820px 520px at 80% -6%,rgba(238,157,187,.13),transparent 62%),radial-gradient(900px 700px at 30% 30%,rgba(110,26,40,.55),transparent 70%),radial-gradient(800px 700px at 90% 100%,rgba(90,18,30,.6),transparent 65%),var(--bg);
+  --paper-grad:linear-gradient(155deg,#FCFAF7 0%,#EFE8E0 38%,#F8F4EF 58%,#E8DFD6 100%);
+  --shadow-note:0 22px 40px -22px rgba(0,0,0,.85),0 2px 0 rgba(0,0,0,.3);
+  --eglise-bg:#F5EFE9; --eglise-fg:#6E1A28;
+  --ivory:#F5EFE9; --ivory-soft:#BCA8A7; --gold-fixed:#EE9DBB;
+}
+/* Mode clair : soie ivoire et halo rose-beige. Le satin noir reste noir. */
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
+  --bg:#F5F0EB; --surface:#FFFFFF; --raised:#E8DCD6;
+  --cream:#2A1A1D; --muted:#7D6967; --line:#E4D7D0;
+  --paper:#FFFFFF; --paper-line:#ECE3DD;
+  --rose:#A8506A; --gold:#B4466F; --gold-soft:#F1DDD6;
+  --panel:rgba(255,255,255,.74); --now:rgba(180,70,111,.10);
+  --app-bg:radial-gradient(760px 540px at 55% 18%,rgba(214,180,176,.55),transparent 70%),radial-gradient(700px 500px at 100% 0%,rgba(238,157,187,.22),transparent 60%),var(--bg);
+  --paper-grad:linear-gradient(155deg,#FFFFFF 0%,#F8F4F0 40%,#FFFFFF 62%,#F3EDE8 100%);
+  --shadow-note:0 18px 34px -20px rgba(70,30,40,.35),0 1px 0 rgba(70,30,40,.08);
+  --eglise-bg:#6E1A28; --eglise-fg:#F5EFE9; color-scheme:light}}
+:root[data-theme="light"]{
+  --bg:#F5F0EB; --surface:#FFFFFF; --raised:#E8DCD6;
+  --cream:#2A1A1D; --muted:#7D6967; --line:#E4D7D0;
+  --paper:#FFFFFF; --paper-line:#ECE3DD;
+  --rose:#A8506A; --gold:#B4466F; --gold-soft:#F1DDD6;
+  --panel:rgba(255,255,255,.74); --now:rgba(180,70,111,.10);
+  --app-bg:radial-gradient(760px 540px at 55% 18%,rgba(214,180,176,.55),transparent 70%),radial-gradient(700px 500px at 100% 0%,rgba(238,157,187,.22),transparent 60%),var(--bg);
+  --paper-grad:linear-gradient(155deg,#FFFFFF 0%,#F8F4F0 40%,#FFFFFF 62%,#F3EDE8 100%);
+  --shadow-note:0 18px 34px -20px rgba(70,30,40,.35),0 1px 0 rgba(70,30,40,.08);
+  --eglise-bg:#6E1A28; --eglise-fg:#F5EFE9; color-scheme:light}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--cream);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer}
+input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:2px;border-radius:6px}
+h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+.num{font-variant-numeric:tabular-nums}
+.soft{color:var(--muted)}
+.small{font-size:14px}
+
+/* ---------- Agenda ---------- */
+.app{display:grid;grid-template-columns:232px minmax(0,1fr);min-height:100vh;background:var(--app-bg)}
+.spine{background:var(--spine);color:var(--ivory);position:sticky;top:0;height:100vh;height:100dvh;display:flex;flex-direction:column;gap:28px;padding:30px 0 22px max(18px,env(safe-area-inset-left,0px));overflow-y:auto;border-right:1px solid var(--line)}
+.brand{padding-right:18px}
+.brand b{display:block;font-family:var(--f-display);font-weight:400;font-size:44px;line-height:.9;letter-spacing:-.01em}
+.brand span{display:block;margin-top:10px;color:var(--gold);font-family:var(--f-hand);font-size:22px;line-height:1}
+.tabs{display:flex;flex-direction:column;gap:4px}
+.tab{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:0;color:var(--ivory-soft);padding:11px 16px;border-radius:14px 0 0 14px;font-size:16px;font-weight:500;transition:background .2s,color .2s}
+.tab::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.35;flex:none}
+.tab:hover{color:var(--ivory)}
+.tab[aria-selected="true"]{background:var(--bg);color:var(--cream)}
+.tab[aria-selected="true"]::before{background:var(--rose);opacity:1}
+.spine-foot{margin-top:auto;padding-right:18px;display:flex;flex-direction:column;gap:8px}
+.spine-foot button{background:none;border:1px solid rgba(245,239,233,.2);color:var(--ivory);border-radius:999px;padding:8px 14px;font-size:14px;text-align:left}
+.spine-foot p{color:var(--ivory-soft);font-size:13px;line-height:1.4}
+
+main{min-width:0;padding-block:36px 64px;padding-left:clamp(20px,4vw,52px);padding-right:max(20px,env(safe-area-inset-right,0px))}
+.view{max-width:1020px;display:flex;flex-direction:column;gap:42px}
+.view-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px 24px}
+.kicker{font-family:var(--f-hand);font-size:24px;line-height:1.1;color:var(--gold)}
+.h-page{font-family:var(--f-display);font-weight:400;font-size:clamp(40px,5.2vw,62px);line-height:1;letter-spacing:-.01em}
+.h-sec{font-family:var(--f-display);font-style:italic;font-size:27px;line-height:1.1}
+.spaced{font-family:var(--f-display);text-transform:uppercase;letter-spacing:.42em;font-size:12.5px;color:var(--gold)}
+.sec{display:flex;flex-direction:column;gap:16px;min-width:0}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start}
+
+/* Trois matières : surface sombre, papier crème, carte noire */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;min-width:0}
+.paper{position:relative;background:var(--paper);background-image:var(--paper-grad);color:var(--paper-ink);border-radius:3px;padding:28px 24px 22px;min-width:0;box-shadow:var(--shadow-note)}
+.paper .soft,.paper .p-goal,.paper .when{color:var(--paper-soft)}
+.paper .h-sec{color:var(--paper-ink)}
+.tape::before{content:"";position:absolute;top:-11px;left:50%;width:92px;height:24px;transform:translateX(-50%) rotate(-3deg);background:rgba(20,10,12,.55);box-shadow:0 1px 2px rgba(0,0,0,.25)}
+.tilt-l{transform:rotate(-.7deg)} .tilt-r{transform:rotate(.6deg)}
+.noir{background:var(--noir);background-image:linear-gradient(125deg,#0B0708 0%,#1C1517 34%,#0B0708 52%,#231B1D 70%,#0B0708 100%);border:1px solid #2A1D20;border-radius:4px;padding:30px 26px;color:var(--ivory);text-align:center;box-shadow:var(--shadow-note)}
+.noir .spaced{color:var(--gold-fixed)}
+.noir .heart{display:block;margin-top:14px;font-size:20px;color:var(--ivory);opacity:.85}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--cream);background:var(--cream);color:var(--bg);border-radius:999px;padding:9px 18px;font-size:15px;font-weight:600}
+.btn.line{background:transparent;color:var(--cream)}
+
+/* ---------- Accueil : le winter arc ---------- */
+.arc{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:28px 44px;align-items:start}
+.arc h1{font-family:var(--f-display);font-weight:400;font-size:clamp(54px,7.6vw,100px);line-height:.9;letter-spacing:-.02em;margin-top:10px}
+.arc-dates{margin-top:16px;font-family:var(--f-display);font-style:italic;font-size:21px;color:var(--muted)}
+.arc-status{margin-top:22px;display:flex;flex-direction:column;gap:6px;max-width:44ch}
+.arc-status strong{font-size:18px;font-weight:600}
+.bigcount{display:flex;align-items:baseline;gap:12px;margin-top:22px}
+.bigcount b{font-family:var(--f-display);font-weight:400;font-size:76px;line-height:1;color:var(--gold)}
+.bigcount span{color:var(--muted);max-width:18ch;line-height:1.3}
+
+.grid56{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:7px}
+.g-row{display:grid;grid-template-columns:76px repeat(7,minmax(0,1fr)) 40px;align-items:center;gap:6px}
+.g-row.head span{font-size:12px;color:var(--muted);text-align:center}
+.g-lab{font-size:13px;line-height:1.15}
+.g-lab b{display:block;font-weight:600}
+.g-lab span{color:var(--muted);font-size:12px}
+.g-row.now .g-lab b{color:var(--rose)}
+.dot{justify-self:center;width:min(24px,100%);aspect-ratio:1;max-width:100%;border-radius:50%;border:1.5px solid var(--line)}
+.dot.past{background:var(--raised);border-color:var(--raised)}
+.dot.done{background:var(--rose);border-color:var(--rose)}
+.dot.today{box-shadow:0 0 0 2px var(--surface),0 0 0 3.5px var(--gold)}
+.g-score{font-size:12px;color:var(--muted);text-align:right}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:8px;font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px;border:1.5px solid var(--line)}
+.legend i.done{background:var(--rose);border-color:var(--rose)}
+.legend i.past{background:var(--raised);border-color:var(--raised)}
+
+.why{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:26px;align-items:center}
+.verse{font-family:var(--f-display);font-style:italic;font-size:27px;line-height:1.3}
+.verse small{display:block;margin-top:14px;font-style:normal}
+.why .paper p+p{margin-top:10px}
+
+.weeknav{display:flex;align-items:center;gap:8px}
+.icon-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center}
+.icon-btn svg{width:18px;height:18px}
+.icon-btn:disabled{opacity:.35;cursor:default}
+.weeknav b{font-weight:600;min-width:15ch;text-align:center}
+.pillars{display:flex;flex-direction:column}
+.pillar{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 22px;padding:18px 0;border-top:1px solid var(--line)}
+.pillar:last-child{border-bottom:1px solid var(--line)}
+.p-name{font-family:var(--f-display);font-size:22px;line-height:1.15}
+.p-name small{display:block;margin-top:6px;font-family:var(--f-body);font-size:13px;color:var(--muted);line-height:1.35}
+.p-body{display:flex;flex-direction:column;gap:8px;min-width:0}
+.p-goal{font-size:14px;color:var(--muted)}
+.p-goal b{color:var(--cream);font-weight:600}
+
+.check{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;background:none;border:0;padding:4px 0}
+.box{flex:none;width:24px;height:24px;border-radius:7px;border:1.5px solid var(--muted);display:grid;place-items:center;margin-top:1px;transition:background .15s,border-color .15s}
+.box svg{width:15px;height:15px;opacity:0;color:var(--bg)}
+.paper .box{border-color:var(--paper-soft)}
+.check[aria-pressed="true"] .box{background:var(--rose);border-color:var(--rose)}
+.check[aria-pressed="true"] .box svg{opacity:1}
+.check[aria-pressed="true"] .lbl{opacity:.6;text-decoration:line-through;text-decoration-color:var(--rose)}
+.paper .check[aria-pressed="true"] .lbl{text-decoration-color:var(--rose-ink)}
+.check .when{display:block;font-size:13px;color:var(--muted)}
+.extra{font-size:14px;color:var(--muted);padding-top:14px}
+
+.dates{display:flex;flex-direction:column}
+.date-row{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:11px 0;border-bottom:1px solid var(--line)}
+.date-row b{font-weight:600}
+.date-row.past{color:var(--muted)}
+.date-row.next b{color:var(--rose)}
+.later{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.later h3{font-family:var(--f-display);font-style:italic;font-size:20px;margin-bottom:8px;color:var(--gold)}
+.later li{padding:6px 0;border-bottom:1px dashed var(--line);font-size:15px}
+.support{font-size:15px;color:var(--muted);max-width:70ch}
+
+/* ---------- Aujourd'hui ---------- */
+.today{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:24px;align-items:start}
+.side{display:flex;flex-direction:column;gap:26px;min-width:0}
+.timeline{display:flex;flex-direction:column}
+.tl{display:grid;grid-template-columns:78px minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.tl:last-child{border-bottom:0}
+.tl-time{font-weight:700;font-variant-numeric:tabular-nums;font-size:15px}
+.tl.now{background:var(--now);border-radius:12px;padding-inline:10px;margin-inline:-10px;border-bottom-color:transparent}
+.tl.now .tl-time{color:var(--gold)}
+.tl.done{color:var(--muted)}
+.tag{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:2px 9px;margin-left:8px;vertical-align:1px}
+.tag.eglise{background:var(--eglise-bg);color:var(--eglise-fg)}
+.tag.sport{background:var(--rose);color:var(--bg)}
+.tag.prep{background:var(--gold-soft);color:var(--paper-ink)}
+.tag.sante{background:var(--raised);color:var(--rose)}
+.field{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}
+.field input{width:100%;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 14px;font-size:17px;color:var(--cream)}
+.paper .field{color:var(--paper-soft)}
+.paper .field input{background:transparent;border:0;border-bottom:1.5px dashed var(--paper-line);border-radius:0;padding:6px 2px;font-family:var(--f-hand);font-size:30px;line-height:1.1;color:var(--paper-ink)}
+.paper .field input::placeholder{color:var(--paper-soft);opacity:.7}
+.field input:focus{outline:2px solid var(--rose);outline-offset:2px}
+.task-done{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;flex-wrap:wrap}
+.save-state{font-size:13px;color:var(--paper-soft)}
+.toggle{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--paper-ink);background:transparent;color:var(--paper-ink);border-radius:999px;padding:8px 16px 8px 10px;font-weight:600}
+.toggle .box{width:22px;height:22px;border-radius:50%;border-color:var(--paper-soft)}
+.toggle[aria-pressed="true"]{background:var(--paper-ink);color:var(--paper)}
+.toggle[aria-pressed="true"] .box{background:var(--rose);border-color:var(--rose)}
+.toggle[aria-pressed="true"] .box svg{opacity:1}
+.big{font-family:var(--f-display);font-size:30px;line-height:1.1;margin:8px 0}
+.rappels li{padding:8px 0;border-bottom:1px dashed var(--paper-line);font-family:var(--f-hand);font-size:23px;line-height:1.15}
+.rappels li:last-child{border-bottom:0}
+
+/* ---------- Semaine ---------- */
+.daily{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.daily h3{font-family:var(--f-display);font-style:italic;font-size:22px;margin-bottom:6px;color:var(--gold)}
+.daily p{font-size:15px}
+.week{display:flex;flex-direction:column}
+.wday{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding:16px 0;border-top:1px solid var(--line)}
+.wday:last-child{border-bottom:1px solid var(--line)}
+.wday h3{font-family:var(--f-display);font-size:25px;line-height:1.05}
+.wday h3 span{display:block;font-family:var(--f-body);font-size:13px;color:var(--muted);margin-top:5px}
+.wday.is-today h3{color:var(--rose)}
+.wday ul{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px 22px}
+.wday li{font-size:15px;display:flex;gap:10px}
+.wday li b{font-variant-numeric:tabular-nums;min-width:56px;font-weight:700}
+.knows{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px 18px;margin:0;text-align:left}
+.knows dt{font-family:var(--f-display);font-style:italic;font-size:20px}
+.knows dd{margin:0;font-size:15px;color:var(--ivory-soft);padding-top:3px}
+
+/* ---------- Routines ---------- */
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px}
+.seg button{border:0;background:none;border-radius:999px;padding:8px 16px;font-weight:600;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--cream);color:var(--bg)}
+.routine{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:28px;align-items:start}
+.r-head{margin-bottom:8px;padding-bottom:10px;border-bottom:1.5px solid var(--paper-ink)}
+.r-head h2{font-family:var(--f-hand);font-weight:600;font-size:34px;line-height:1;text-transform:uppercase;letter-spacing:.06em}
+.r-list{counter-reset:r}
+.r-list li{border-bottom:1px dashed var(--paper-line);counter-increment:r}
+.r-list li:last-child{border-bottom:0}
+.r-list .check{padding:11px 2px;align-items:center}
+.r-list .lbl{font-family:var(--f-hand);font-size:25px;line-height:1.15}
+.r-list .lbl::before{content:counter(r) ". ";color:var(--paper-soft)}
+.ring{position:relative;width:150px;aspect-ratio:1;max-width:100%;margin:6px auto 0}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .ring-txt{position:absolute;inset:0;display:grid;place-items:center;text-align:center}
+.ring b{font-family:var(--f-display);font-size:46px;font-weight:400;line-height:1;color:var(--gold)}
+.ring small{display:block;font-size:13px;color:var(--muted)}
+.r-side{display:flex;flex-direction:column;gap:16px;text-align:center}
+.r-side .kicker{font-size:22px}
+.progress{height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.progress span{display:block;height:100%;background:var(--rose);border-radius:99px;transition:width .3s}
+.tri-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px 24px;margin-top:10px}
+
+/* ---------- Mois ---------- */
+.month-nav{display:flex;align-items:center;gap:12px}
+.month-nav h2{font-family:var(--f-display);font-style:italic;font-size:32px;min-width:9ch;text-align:center}
+.cal-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;min-width:560px}
+.dow{font-size:13px;color:var(--muted);text-align:center;padding-bottom:4px}
+.cell{background:var(--panel);border:1px solid var(--line);border-radius:12px;min-height:92px;padding:8px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cell.out{background:transparent;border-style:dashed;opacity:.45}
+.cell.is-today{border:1.5px solid var(--gold)}
+.c-top{display:flex;justify-content:space-between;align-items:center}
+.c-top span{font-weight:700;font-variant-numeric:tabular-nums}
+.c-top i{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.c-t{align-self:flex-start;border:1.5px solid var(--line);background:none;border-radius:999px;font-size:12px;font-weight:700;padding:2px 9px;color:var(--muted)}
+.c-t[aria-pressed="true"]{background:var(--rose);border-color:var(--rose);color:var(--bg)}
+.c-task{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.events li{display:grid;grid-template-columns:86px minmax(0,1fr);gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.events b{font-weight:600}
+.quote{font-family:var(--f-display);font-style:italic;font-size:22px;color:var(--muted);text-align:center}
+
+/* ---------- Soin de moi ---------- */
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.tile h3{font-family:var(--f-display);font-size:22px;margin:4px 0 6px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:14px;background:var(--surface)}
+.steps-list li{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.steps-list li:last-child{border-bottom:0}
+.steps-list li b{font-family:var(--f-display);font-size:18px;min-width:22px;color:var(--rose)}
+.note{font-size:13px;color:var(--muted);text-align:center}
+
+/* ---------- Sauvegarde ---------- */
+.bk-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.bk-msg{font-size:14px;color:var(--rose);margin-top:10px}
+
+/* ---------- Téléphone et petite tablette ---------- */
+@media (max-width:860px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .spine{position:static;height:auto;flex-direction:column;gap:14px;padding:20px max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px));border-right:0;border-bottom:1px solid var(--line)}
+  .brand{display:flex;align-items:baseline;gap:12px;padding-right:0}
+  .brand b{font-size:36px}
+  .brand span{margin-top:0;font-size:20px}
+  .tabs{flex-direction:row;overflow-x:auto;gap:2px;margin-inline:-4px;padding-inline:4px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{width:auto;white-space:nowrap;border-radius:14px 14px 0 0;padding:11px 14px 13px;flex:none}
+  .tab::before{display:none}
+  .spine-foot{display:none}
+  main{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 48px}
+  .arc,.why,.today,.routine,.cols{grid-template-columns:minmax(0,1fr)}
+  .r-side{flex-direction:row;align-items:center;text-align:left}
+  .ring{width:110px;margin:0}
+  .ring b{font-size:34px}
+  .seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%}
+  .seg button{padding:8px 4px}
+}
+@media (max-width:620px){
+  .pillar,.date-row,.wday{grid-template-columns:minmax(0,1fr);gap:6px}
+  .daily,.tiles,.later,.tri-list{grid-template-columns:minmax(0,1fr)}
+  .g-row{grid-template-columns:58px repeat(7,minmax(0,1fr)) 30px;gap:4px}
+  .knows{grid-template-columns:minmax(0,1fr);gap:2px}
+  .knows dd{margin-bottom:10px}
+  .grid56{padding:14px}
+  .panel,.paper{padding-inline:18px}
+  .tilt-l,.tilt-r{transform:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="app">
+  <aside class="spine">
+    <div class="brand"><b>Ma vie</b><span id="today-label">Aujourd'hui</span></div>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab" role="tab" id="t-accueil" aria-controls="p-accueil" aria-selected="true">Accueil</button>
+      <button class="tab" role="tab" id="t-jour" aria-controls="p-jour" aria-selected="false">Aujourd'hui</button>
+      <button class="tab" role="tab" id="t-semaine" aria-controls="p-semaine" aria-selected="false">Ma semaine</button>
+      <button class="tab" role="tab" id="t-routines" aria-controls="p-routines" aria-selected="false">Mes routines</button>
+      <button class="tab" role="tab" id="t-mois" aria-controls="p-mois" aria-selected="false">Mon mois</button>
+      <button class="tab" role="tab" id="t-soin" aria-controls="p-soin" aria-selected="false">Le soin de moi</button>
+    </nav>
+    <div class="spine-foot">
+      <button type="button" id="go-backup">Ma sauvegarde</button>
+      <p id="sync">Gardé sur cette tablette.</p>
+    </div>
+  </aside>
+
+  <main>
+    <!-- ACCUEIL -->
+    <section class="view" id="p-accueil" role="tabpanel" aria-labelledby="t-accueil">
+      <div class="arc">
+        <div>
+          <p class="kicker" id="hello">Bonjour Victoria</p>
+          <h1>Mon winter arc</h1>
+          <p class="arc-dates">2 novembre → 27 décembre 2026</p>
+          <div class="arc-status" id="arc-status"></div>
+          <div class="bigcount" id="arc-count"></div>
+        </div>
+        <div>
+          <div class="grid56" id="grid56" aria-label="Mes 56 jours"></div>
+          <div class="legend"><span><i class="done"></i>Ma tâche importante faite</span><span><i class="past"></i>Jour passé</span><span><i></i>À venir</span></div>
+        </div>
+      </div>
+
+      <div class="why">
+        <div class="paper tape tilt-l">
+          <h2 class="h-sec" style="margin-bottom:12px">Mon pourquoi</h2>
+          <p>Pendant 8 semaines, je me concentre sur moi pour me préparer au mariage : mon âme, mon corps, mon foyer, le soin de moi et mon avenir professionnel. Je veux devenir une femme qui reflète Jésus-Christ, et que ma vie s'organise.</p>
+          <p class="soft">Ma règle d'or : une seule petite action par pilier et par semaine, en plus de mes routines. Même si j'ai envie de faire plus. Une semaine manquée n'annule rien : je reprends la suivante, sans rattraper.</p>
+        </div>
+        <div class="noir tilt-r">
+          <p class="verse">« Lève-toi, brille, car ta lumière arrive. »<small class="spaced">Ésaïe 60:1</small></p>
+          <span class="heart" aria-hidden="true">♡</span>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-head">
+          <h2 class="h-sec">Mes 5 piliers cette semaine</h2>
+          <div class="weeknav">
+            <button class="icon-btn" id="w-prev" aria-label="Semaine précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <b id="w-title">Semaine 1</b>
+            <button class="icon-btn" id="w-next" aria-label="Semaine suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <div class="pillars" id="pillars"></div>
+        <p class="extra" id="w-extra" hidden></p>
+      </div>
+
+      <div class="cols">
+        <div class="sec">
+          <h2 class="h-sec">Mes dates clés</h2>
+          <div class="dates" id="dates"></div>
+        </div>
+        <div class="sec">
+          <h2 class="h-sec">Rangé à sa date en 2027</h2>
+          <div class="later" id="later"></div>
+          <p class="small soft">Une idée qui arrive entre-temps va dans « Vide ma tête ». Elle trouve sa place au bilan du 27 décembre.</p>
+        </div>
+      </div>
+
+      <p class="support">Je ne porte pas tout seule. La tristesse, le mal à espérer et le manque de confiance, je les travaille avec Dieu, et avec une personne de confiance pour m'accompagner : une responsable à l'église, une conseillère chrétienne ou une psychologue.</p>
+    </section>
+
+    <!-- AUJOURD'HUI -->
+    <section class="view" id="p-jour" role="tabpanel" aria-labelledby="t-jour" hidden>
+      <div class="view-head">
+        <div><p class="kicker" id="day-kicker">Aujourd'hui</p><h1 class="h-page" id="day-title">Lundi</h1></div>
+      </div>
+      <div class="today">
+        <div class="panel">
+          <h2 class="h-sec" style="margin-bottom:8px">Le fil de ma journée</h2>
+          <div class="timeline" id="timeline"></div>
+        </div>
+        <div class="side">
+          <div class="paper tape">
+            <h2 class="h-sec" style="margin-bottom:12px">Ma tâche importante</h2>
+            <label class="field" for="tache">Une seule chose qui compte aujourd'hui
+              <input type="text" id="tache" placeholder="Aujourd'hui, je fais…" autocomplete="off">
+            </label>
+            <div class="task-done">
+              <button class="toggle" id="t-done" type="button" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>C'est fait</button>
+              <span class="save-state" id="save-state" aria-live="polite"></span>
+            </div>
+            <p class="small soft" style="margin-top:12px">Ma prière se coche dans Lève-toi, mon sport dans Mon Coach.</p>
+          </div>
+          <div class="panel" id="sport-card"></div>
+          <div class="paper tilt-r">
+            <h2 class="h-sec" style="margin-bottom:6px">À ne pas oublier</h2>
+            <ul class="rappels" id="rappels"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEMAINE -->
+    <section class="view" id="p-semaine" role="tabpanel" aria-labelledby="t-semaine" hidden>
+      <div class="view-head"><div><p class="kicker" id="week-kicker">Cette semaine</p><h1 class="h-page">Ma semaine</h1></div></div>
+      <div class="daily">
+        <div><h3>7h → 8h35</h3><p>Réveil à 7h. Douche, visage, la tenue et le petit-déj prêts depuis la veille. 8h : prière perso. 8h35 : train, avec mes casquettes église et mes prédications.</p></div>
+        <div><h3>Après le travail</h3><p>Je rentre vers 19h15 et je dîne. Les soirs de salle (mercredi, vendredi, lundi en bonus), la salle à 21h et rien d'autre.</p></div>
+        <div><h3>Le soir</h3><p>22h15 : je prépare demain. Visage du soir, étirements ou massage. 23h : téléphone posé, prière, journal, magnésium. 23h30 : dodo.</p></div>
+      </div>
+      <div class="week" id="week"></div>
+      <div class="noir">
+        <p class="spaced" style="margin-bottom:18px">Je sais quand</p>
+        <dl class="knows">
+          <dt>Sport</dt><dd>mercredi et vendredi 21h · samedi entre 18h et 21h · lundi 21h en bonus · jamais mardi ni jeudi</dd>
+          <dt>Cuisine</dt><dd>samedi 15h · mardi 19h30</dd>
+          <dt>Courses</dt><dd>samedi 14h, environ 31 €</dd>
+          <dt>Église</dt><dd>casquettes et prédications dans le train · 1er samedi 16h30, mon planning spirituel · dernier dimanche 20h, le planning du mois</dd>
+          <dt>Jeûne</dt><dd>chaque jeudi dès le 5 novembre</dd>
+          <dt>Famille</dt><dd>dimanche après-midi, rien d'autre</dd>
+          <dt>Cheveux</dt><dd>un samedi sur deux</dd>
+          <dt>Ongles</dt><dd>dernier samedi du mois</dd>
+          <dt>Bilan</dt><dd>dimanche 21h, 10 min, puis ma sauvegarde</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ROUTINES -->
+    <section class="view" id="p-routines" role="tabpanel" aria-labelledby="t-routines" hidden>
+      <div class="view-head">
+        <div><p class="kicker">Je coche au fur et à mesure. Demain, tout repart à zéro.</p><h1 class="h-page">Mes routines</h1></div>
+        <div class="seg" id="seg" role="group" aria-label="Choisir une routine"></div>
+      </div>
+      <div class="routine">
+        <div class="paper tape">
+          <div class="r-head"><div><h2 id="r-title">Matin</h2><p class="small soft" id="r-when"></p></div></div>
+          <ul class="r-list" id="r-list"></ul>
+        </div>
+        <div class="r-side">
+          <div class="ring" id="ring"></div>
+          <p class="kicker" id="r-note"></p>
+        </div>
+      </div>
+      <div class="panel">
+        <h2 class="h-sec">Mon tri du samedi</h2>
+        <p class="small soft" style="margin-top:4px">Une zone par samedi, 30 minutes maximum.</p>
+        <div class="progress" style="margin-top:14px" aria-hidden="true"><span id="tri-bar" style="width:0%"></span></div>
+        <p class="small soft" id="tri-count" style="margin-top:6px"></p>
+        <ul class="tri-list" id="tri"></ul>
+      </div>
+    </section>
+
+    <!-- MOIS -->
+    <section class="view" id="p-mois" role="tabpanel" aria-labelledby="t-mois" hidden>
+      <div class="view-head">
+        <div><p class="kicker">T = ma tâche importante faite</p><h1 class="h-page">Mon mois</h1></div>
+        <div class="month-nav">
+          <button class="icon-btn" id="m-prev" aria-label="Mois précédent"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+          <h2 id="m-title">Novembre 2026</h2>
+          <button class="icon-btn" id="m-next" aria-label="Mois suivant"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg></button>
+        </div>
+      </div>
+      <div class="cal-wrap"><div class="cal" id="cal"></div></div>
+      <div class="panel">
+        <h2 class="h-sec" style="margin-bottom:6px">Ce mois-ci</h2>
+        <ul class="events" id="m-events"></ul>
+      </div>
+      <p class="quote">Ce qui est coché compte. Ce qui ne l'est pas ne m'accuse pas.<br>♡</p>
+    </section>
+
+    <!-- SOIN DE MOI -->
+    <section class="view" id="p-soin" role="tabpanel" aria-labelledby="t-soin" hidden>
+      <div class="view-head"><div><p class="kicker">Mon corps, ma peau, mes cheveux, ma santé</p><h1 class="h-page">Le soin de moi</h1></div></div>
+      <div class="cols">
+        <div class="panel"><h2 class="h-sec" style="margin-bottom:10px">Chez le généraliste, je demande</h2><ul id="questions"></ul></div>
+        <div class="panel"><h2 class="h-sec" style="margin-bottom:10px">Mes rendez-vous</h2><ul id="rdv"></ul></div>
+      </div>
+      <div class="sec">
+        <h2 class="h-sec">Mes compléments</h2>
+        <div class="tiles">
+          <div class="paper tape tile"><p class="small soft">Le matin, au petit-déj</p><h3>D3, oméga 3, collagène</h3><p class="small soft">Rappel tous les jours à 7h30.</p></div>
+          <div class="paper tape tile"><p class="small soft">Le soir</p><h3>Magnésium</h3><p class="small soft">Pour le sommeil et le stress. À 23h, avec ma prière.</p></div>
+          <div class="paper tape tile" id="probio"><p class="small soft">Jusqu'au 9 novembre</p><h3>Probiotiques</h3><p class="small soft">Le 9 novembre, je regarde si mon transit va mieux.</p></div>
+        </div>
+      </div>
+      <div class="cols">
+        <div class="panel">
+          <h2 class="h-sec" style="margin-bottom:8px">Ma routine visage</h2>
+          <p class="small soft">Simple, matin et soir. Je l'adapte après le diagnostic de peau.</p>
+          <ul class="steps-list" style="margin-top:8px">
+            <li><b>1</b><span><strong>Matin</strong> : nettoyant doux, crème hydratante, protection solaire.</span></li>
+            <li><b>2</b><span><strong>Soir</strong> : démaquillage, nettoyant doux, crème hydratante.</span></li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h2 class="h-sec" style="margin-bottom:8px">Mes cheveux</h2>
+          <p id="hair-next" style="font-size:17px"></p>
+          <p class="small soft" style="margin-top:8px">Shampoing, soin, masque visage et gommage, le samedi à 9h. En janvier, je cherche des soins adaptés à mes cheveux.</p>
+        </div>
+      </div>
+      <div class="cols">
+        <div class="panel">
+          <h2 class="h-sec" style="margin-bottom:8px">Au diagnostic de peau, je montre</h2>
+          <ul class="steps-list">
+            <li><b>1</b><span>Mon contour des yeux.</span></li>
+            <li><b>2</b><span>Mes taches de pigmentation.</span></li>
+            <li><b>3</b><span>Je demande une routine simple, à petit prix.</span></li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h2 class="h-sec" style="margin-bottom:8px">Pour mon fer et ma B9</h2>
+          <p class="small">Le fer de la viande s'absorbe le mieux : bœuf haché, cuisses de poulet. De la vitamine C au même repas, comme mes kiwis. Thé et café 1 à 2 h après. Skyr et laitages plutôt à distance des repas riches en fer.</p>
+          <h3 style="font-family:var(--f-display);font-size:18px;margin:16px 0 8px">Dans le placard pour l'instant</h3>
+          <div class="pills"><span class="pill">Zinc (freine le fer)</span><span class="pill">Ashwagandha</span><span class="pill">L-glutamine</span><span class="pill">Inositol (après la sage-femme)</span></div>
+        </div>
+      </div>
+      <p class="note">À confirmer avec ton médecin : ce sont des repères, pas une prescription.</p>
+    </section>
+
+    <!-- SAUVEGARDE -->
+    <section class="view" id="p-backup" hidden>
+      <div class="view-head"><div><p class="kicker">Le dimanche à 21h, après mon bilan</p><h1 class="h-page">Ma sauvegarde</h1></div></div>
+      <div class="panel" id="backup">
+        <p>Ma tâche du jour, mes routines et mes coches sont gardées sur cette tablette. Une fois par semaine, je télécharge ou je copie ma sauvegarde. Elle reste chez moi : je ne la mets jamais sur GitHub.</p>
+        <div class="bk-row">
+          <button class="btn" id="bk-dl" type="button">Télécharger</button>
+          <button class="btn line" id="bk-cp" type="button">Copier</button>
+          <button class="btn line" id="bk-file-btn" type="button">Restaurer un fichier</button>
+        </div>
+        <input type="file" id="bk-file" accept=".json,application/json,text/plain" hidden>
+        <label class="field" for="bk-text" style="margin-top:18px">Ou colle ici une sauvegarde copiée
+          <input type="text" id="bk-text" autocomplete="off" placeholder="Colle ta sauvegarde, puis « Restaurer le texte »">
+        </label>
+        <div class="bk-row"><button class="btn line" id="bk-restore" type="button">Restaurer le texte</button></div>
+        <p class="bk-msg" id="bk-msg" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+"use strict";
+var CHECK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+var JOURS=['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi'];
+var MOIS=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+var MC=['janv.','févr.','mars','avr.','mai','juin','juil.','août','sept.','oct.','nov.','déc.'];
+function pad(n){return (n<10?'0':'')+n}
+function key(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+function mkey(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)}
+function fromKey(k){var p=k.split('-');return new Date(+p[0],+p[1]-1,+p[2])}
+function addDays(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x}
+function dim(y,m){return new Date(y,m+1,0).getDate()}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function shortDate(k){var d=fromKey(k);return d.getDate()+' '+MC[d.getMonth()]}
+var NOW=new Date(); var TODAY=new Date(NOW.getFullYear(),NOW.getMonth(),NOW.getDate());
+var NOV='2026-11-02', CYCLE_FIN='2026-12-27', ARC_START=fromKey(NOV);
+
+/* ---------- Mon winter arc ---------- */
+var PILIERS=[
+  {id:'ame',nom:'🖤 Mon âme',routine:'Prière à 8h et à 23h. Méditation le soir. Prédications dans le train. Jeûne le jeudi. Journal de bord, 5 min le soir.',but:'Femmes de la Bible terminées. 4 thèmes de prédications triés. Un journal tenu chaque semaine.'},
+  {id:'corps',nom:'🎀 Mon corps',routine:'Salle mercredi, vendredi, samedi, et lundi en bonus. Mes compléments.',but:'24 séances. Hip thrust à 50 kg × 8.'},
+  {id:'foyer',nom:'🩷 Mon foyer',routine:'Meal prep le samedi et le mardi. Ménage le samedi matin. La veille au soir : tenue et petit-déj prêts.',but:'Je cuisine mes bases seule. J\'ai cuisiné au moins 4 fois pour ma famille.'},
+  {id:'soin',nom:'🌸 Le soin de moi',routine:'Routine visage matin et soir. Cheveux un samedi sur deux.',but:'Rendez-vous médical fait. Une routine visage simple qui me va.'},
+  {id:'pro',nom:'▪️ Mon avenir pro',routine:'2 fois 30 min de révision par semaine, dès décembre.',but:'Concours B choisi, inscription faite ou datée. Candidature spontanée envoyée.'}
+];
+var SEMAINES=[
+  {titre:'Je m\'installe',ame:'Je finis les Femmes de la Bible. J\'ouvre mon journal de bord. Prédications : thème 1',corps:'Ma composition corporelle est refaite avant le 2. Première semaine du plan',foyer:'Mon premier meal prep avec mes bases',soin:'Je prends rendez-vous chez le généraliste, avec toutes mes questions',pro:'Je demande aux RH : passer de vacataire à contractuelle ? Une préparation aux concours ?'},
+  {titre:'',ame:'Je commence ma méditation sur mon identité en Christ. Thème 1 terminé',corps:'Lundi 9 : bilan des probiotiques',foyer:'Le soir, je prépare ma tenue et mon petit-déj du lendemain',soin:'Ma routine visage simple, matin et soir',pro:'Je vérifie les dates des concours B et C 2027 avec Claude'},
+  {titre:'',ame:'Prédications : thème 2',corps:'Mercredi 18 : pas de salle, c\'est la décoration',foyer:'Je cuisine un plat pour toute ma famille (1)',soin:'Je note ma routine cheveux du samedi',pro:'J\'envoie ma candidature spontanée aux RH (chargée de mission ou de projet)'},
+  {titre:'Mi-cycle',ame:'Thème 2 terminé',corps:'Je regarde mes séances depuis le 2 novembre',foyer:'Un plat pour ma famille (2)',soin:'Mon rendez-vous médical, s\'il est fixé',pro:'Je récupère le programme et des annales du concours B',extra:'Dimanche 29 : mon point à mi-cycle, 20 minutes.'},
+  {titre:'',ame:'Prédications : thème 3',corps:'Je suis mon plan, rien de plus',foyer:'Samedi 5 : je trie mes placards',soin:'Un diagnostic de peau gratuit, en boutique ou en pharmacie',pro:'Je commence les révisions : 2 fois 30 min par semaine, à la pause déjeuner'},
+  {titre:'',ame:'Thème 3 terminé',corps:'Ma semaine la plus forte à la salle',foyer:'Un plat pour ma famille (3)',soin:'J\'adapte ma routine visage avec les conseils du diagnostic',pro:'Révisions, 2 fois 30 min'},
+  {titre:'Semaine allégée',ame:'Prédications : thème 4',corps:'Semaine allégée à la salle',foyer:'Un plat pour ma famille (4)',soin:'Rien de nouveau : je garde ce qui marche',pro:'Révisions, 2 fois 30 min'},
+  {titre:'Noël',ame:'Thème 4 terminé. Je relis tout mon journal de bord',corps:'Semaine test. Dimanche 27 : mesures et photos',foyer:'Noël en famille',soin:'',pro:'Pause',extra:'Dimanche 27 : mon bilan de fin, 45 minutes.'}
+];
+var DATES=[['2026-10-31','Premier meal prep avec mes nouvelles bases'],['2026-11-01','Composition corporelle, mêmes conditions que le 31 août'],['2026-11-02','Début de mon winter arc'],['2026-11-05','Premier jeûne du jeudi'],['2026-11-09','Bilan des probiotiques. Je vérifie les dates des concours'],['2026-11-18','Décoration de la demande en mariage, pas de salle'],['2026-11-29','Point à mi-cycle, 20 minutes'],['2026-12-27','Bilan de fin, mesures et photos'],['2027-01-04','Je planifie mes prochains mois avec Claude']];
+var LATER=[['Janvier · février',['Trier mes réels Instagram enregistrés : garder les vrais conseils de femme','Des soins adaptés à mes cheveux','Lire un livre par mois','Décider de la suite de VC Events avec mon associée']],['Janvier → juin',['Concours B et C : révisions au vrai rythme, épreuves selon le calendrier officiel']],['Mars · avril',['Un rendez-vous chez le dermatologue','Reprendre l\'écriture de mon livre sur la dépendance affective','Apprendre de nouveaux plats pour mon futur foyer']],['Mai · juin',['Documenter mon parcours de restauration, pour aider d\'autres femmes plus tard']]];
+function arcWeek(d){var diff=Math.floor((d-ARC_START)/86400000); if(diff<0) return -1; if(diff>=56) return 8; return Math.floor(diff/7)}
+function weekRange(i){var a=addDays(ARC_START,i*7), b=addDays(a,6); return a.getDate()+(a.getMonth()!==b.getMonth()?' '+MC[a.getMonth()]:'')+' → '+b.getDate()+' '+MC[b.getMonth()]}
+
+/* ---------- Ma semaine type ---------- */
+var TRI=[['2026-10-17','Maquillage'],['2026-10-24','Soins visage et corps'],['2026-10-31','Accessoires cheveux et beauté'],['2026-11-07','Photos du téléphone'],['2026-11-14','Vêtements : les hauts'],['2026-11-21','Vêtements : bas et chaussures'],['2026-11-28','Draps et linge'],['2026-12-05','Placards'],['2026-12-12','Fichiers, notes, applis'],['2026-12-19',"Liste d'achats noir, beige, rose"]];
+var TRI_MAP={}; TRI.forEach(function(t){TRI_MAP[t[0]]=t[1]});
+var SPORT={1:['Bonus · fessiers légers','40 min, seulement si j\'ai l\'énergie : hip thrust, squat machine, leg extension, pull-through'],3:['Fessiers lourds + jambes','Hip thrust, bulgarian, presse, leg curl, abducteur penché'],5:['Haut du corps + marche inclinée','Tirages, épaules, face pull, puis 15 min de marche inclinée'],6:['Fessiers + ischios','RDL, montées sur banc, sumo squat, kickback, abducteur']};
+var REST={2:'Soir maison : meal prep à 19h30, abdos 10 min à 20h15, Pu département à 21h.',4:'Jeûne et soir d\'église, puis massage 10 min à 22h50.',0:'Repos. Après-midi en famille. Étirements 20 min à 22h40.'};
+function hairDay(k){var d=fromKey(k); if(d.getDay()!==6) return false; var diff=Math.round((d-fromKey('2026-10-03'))/86400000); return diff>=0&&diff%14===0}
+function firstSat(d){return d.getDay()===6&&d.getDate()<=7}
+function lastOfMonth(d){return d.getDate()+7>dim(d.getFullYear(),d.getMonth())}
+function sportPlan(dow,k){
+  if(k==='2026-11-18') return {s:null,rest:'Décoration de la demande en mariage : pas de salle ce soir. Je ne rattrape pas.'};
+  return SPORT[dow]?{s:SPORT[dow],time:dow===6?'entre 18h et 21h':'21h',note:dow===5?'Si je sors ce soir, je fais cette séance lundi.':(dow===1?'Vendredi ou samedi manqué : je fais cette séance-là à la place.':'')}:{s:null,rest:REST[dow]};
+}
+function dayItems(d){
+  var dow=d.getDay(), k=key(d), jeune=k>='2026-11-05', it=[];
+  if(dow>=1&&dow<=5){
+    it.push(['7h','Réveil. Douche, déodorant, visage. Ma tenue et mon petit-déj sont prêts depuis hier soir']);
+    it.push(['8h','Prière perso','eglise']);
+    it.push(['8h35','Train : mes casquettes église et mes prédications. Retour : lecture ou sieste']);
+  }
+  switch(dow){
+    case 1: it.push(['19h15','Je rentre et je dîne'],['21h','Salle en bonus, si j\'ai l\'énergie : fessiers légers','sport']); break;
+    case 2: it.push(['19h15','Je rentre : soir maison'],['19h30','Meal prep : poulet au four, riz, haricots verts et bolognaise','prep'],['20h15','Abdos 10 min'],['21h','Pu département','eglise']); break;
+    case 3:
+      if(k==='2026-11-18'){ it.push(['Soir','Décoration de la demande en mariage (VC Events). Pas de salle']); break; }
+      it.push(['19h15','Je rentre, je lance une machine, je dîne'],['21h','Salle : fessiers lourds + jambes','sport']); break;
+    case 4: if(jeune) it.push(['Journée','Jeûne','eglise']); it.push(['19h15','Je rentre'+(jeune?' et je romps le jeûne doucement':' et je dîne')],['19h30','Pré-culte et PU','eglise'],['20h','Culte online','eglise']); break;
+    case 5: it.push(['19h15','Je rentre et je dîne : mon wrap'],['21h','Salle : haut du corps + 15 min de marche inclinée. Si je sors, je la fais lundi','sport']); break;
+    case 6:
+      it.push(['9h', hairDay(k)?'Shampoing, soin cheveux, masque visage, gommage':'Douche longue et hydratation complète']);
+      it.push(['9h30','Ma chambre, ma salle de bain, le ménage de la maison, une machine (fini à 13h)']);
+      if(TRI_MAP[k]) it.push(['12h30','30 min de tri : '+TRI_MAP[k]]);
+      it.push(['14h','Courses de la semaine (liste dans Mon Coach)'],['15h','Meal prep : riz, plantain et poulet, et mes 12 pancakes','prep']);
+      if(firstSat(d)) it.push(['16h30','Mon planning spirituel, dans Lève-toi','eglise']);
+      it.push(['18h-21h','Salle : fessiers + ischios, je choisis mon heure','sport'],['Soir','Mon plaisir sucré de la semaine']);
+      break;
+    case 0:
+      it.push(['8h','Pu (8h et 8h45)','eglise'],['9h30','MFD online','eglise'],['Après-midi','En famille. Rien d\'autre']);
+      if(lastOfMonth(d)) it.push(['20h','Planning église du mois','eglise']);
+      it.push(['21h','Bilan 10 min : 3 tâches de « Vide ma tête », pas plus. Puis ma sauvegarde']);
+      break;
+  }
+  if(dow===0||dow<=4) it.push(['22h15',dow===3?'J\'étends le linge et je prépare demain : tenue, petit-déj, boîte, sac':'Je prépare demain : tenue, petit-déj, boîte, sac']);
+  if(dow===0) it.push(['22h40','Étirements 20 min']);
+  if(dow===4) it.push(['22h50','Massage 10 min : ventre et jambes']);
+  it.push(['23h','Téléphone posé. Prière, méditation, journal de bord, magnésium','eglise']);
+  it.push(['23h30','Dodo']);
+  return it;
+}
+function eventsFor(d){
+  var k=key(d), dow=d.getDay(), day=d.getDate(), ev=[];
+  if(firstSat(d)) ev.push('Mon planning spirituel à 16h30 (1er samedi)');
+  if(hairDay(k)) ev.push('Soin cheveux, masque, gommage');
+  if(dow===6&&lastOfMonth(d)) ev.push('Ongles (dernier samedi)');
+  if(dow===0&&lastOfMonth(d)) ev.push('Planning église, bilan du mois, budget, mensurations');
+  if(day===28) ev.push('Paie : épargne, dîme, dette, mes pockets Revolut');
+  if(TRI_MAP[k]) ev.push('Tri : '+TRI_MAP[k]);
+  DATES.forEach(function(x){ if(x[0]===k) ev.push(x[1]) });
+  return ev;
+}
+
+/* ---------- Mes routines ---------- */
+function nextDow(target){var d=new Date(TODAY); while(d.getDay()!==target) d=addDays(d,1); return d}
+function routineDate(id){ if(id==='samedi') return nextDow(6); if(id==='dimanche') return nextDow(0); return TODAY }
+var ROUTINES={
+  matin:{nom:'Matin',quand:function(){return 'Du lundi au vendredi, de 7h à 8h35'},items:function(){return [
+    {id:'eau',t:'Réveil à 7h, un grand verre d\'eau'},
+    {id:'douche',t:'Douche et déodorant'},
+    {id:'visage',t:'Visage : nettoyant, crème, protection solaire'},
+    {id:'tenue',t:'Ma tenue posée hier soir, coiffure, maquillage'},
+    {id:'pdj',t:'Mon petit-déj prêt depuis hier soir, avec D3, oméga 3 et collagène'},
+    {id:'sac',t:'Ma boîte du midi et ma gourde dans le sac'},
+    {id:'priere',t:'8h · Prière perso'},
+    {id:'train',t:'8h35 · Train : mes casquettes église et mes prédications'}]}},
+  soir:{nom:'Soir',quand:function(){return 'Tous les soirs, de 22h15 à 23h30'},items:function(d){
+    var td=addDays(d,1).getDay(), list=[];
+    var pdj=td===4?'Demain, c\'est jeûne : pas de petit-déj à préparer':([1,3,6].indexOf(td)>=0?'Mon petit-déj de demain : 4 pancakes sortis du congélateur'+(td===1?' (ou du frigo)':''):'Mon petit-déj de demain : le pain sorti, les œufs prêts');
+    list.push({id:'tenue',t:'22h15 · Je prépare ma tenue de demain'});
+    list.push({id:'pdj',t:pdj});
+    if(td>=1&&td<=5) list.push({id:'sac',t:'Ma boîte du midi au frigo, mon sac et ma gourde prêts'});
+    list.push({id:'demaq',t:'Démaquillage et visage du soir'});
+    if(d.getDay()===4) list.push({id:'corps',t:'22h50 · Massage 10 min, ventre et jambes'});
+    if(d.getDay()===0) list.push({id:'corps',t:'22h40 · Étirements 20 min (Souplesse, dans Mon Coach)'});
+    list.push({id:'tel',t:'23h · Téléphone posé, prière et méditation'});
+    list.push({id:'journal',t:'Mon journal de bord, 5 minutes (dans Lève-toi)'});
+    list.push({id:'magnesium',t:'Magnésium, puis dodo à 23h30'});
+    return list}},
+  samedi:{nom:'Samedi',quand:function(d){return 'Samedi '+d.getDate()+' '+MOIS[d.getMonth()]},items:function(d){
+    var k=key(d), list=[];
+    list.push({id:'corps',t:hairDay(k)?'9h · Shampoing, soin cheveux, masque visage, gommage':'9h · Douche longue et hydratation complète'});
+    list.push({id:'chambre',t:'9h30 · Ma chambre et ma salle de bain'});
+    list.push({id:'maison',t:'Le ménage de la maison et une machine, fini à 13h'});
+    if(TRI_MAP[k]) list.push({id:'tri',t:'12h30 · 30 min de tri : '+TRI_MAP[k]});
+    list.push({id:'courses',t:'14h · Courses, la liste est dans Mon Coach'});
+    list.push({id:'prep',t:'15h · Meal prep : riz, plantain et poulet, et mes 12 pancakes'});
+    if(firstSat(d)) list.push({id:'planning',t:'16h30 · Mon planning spirituel, dans Lève-toi'});
+    if(lastOfMonth(d)) list.push({id:'ongles',t:'Mes ongles (dernier samedi du mois)'});
+    list.push({id:'salle',t:'Entre 18h et 21h · Salle : fessiers + ischios'});
+    list.push({id:'plaisir',t:'Mon plaisir sucré de la semaine'});
+    return list}},
+  dimanche:{nom:'Dimanche',quand:function(d){return 'Dimanche '+d.getDate()+' '+MOIS[d.getMonth()]},items:function(d){
+    var list=[{id:'pu',t:'8h et 8h45 · Pu'},{id:'mfd',t:'9h30 · MFD online'},{id:'famille',t:'L\'après-midi en famille, rien d\'autre'}];
+    if(lastOfMonth(d)) list.push({id:'planning',t:'20h · Planning église du mois'});
+    list.push({id:'bilan',t:'21h · Bilan 10 min : 3 tâches de « Vide ma tête », pas plus'});
+    list.push({id:'sauvegarde',t:'Ma sauvegarde : Lève-toi, Mon Coach, Ma vie'});
+    list.push({id:'soir',t:'Puis ma routine du soir'});
+    return list}}
+};
+function defaultRoutine(){var dow=TODAY.getDay(), h=NOW.getHours(); if(dow===6) return h>=21?'soir':'samedi'; if(dow===0) return h>=21?'soir':'dimanche'; return h<12?'matin':'soir'}
+
+/* ---------- Stockage ---------- */
+var db=null, state={suivi:{},etat:{tri:{},sante:{},mariage:{},arc:{}}}, timers={}, dirty={}, subs={};
+function lsGet(p){try{var v=localStorage.getItem('vie:'+p);return v?JSON.parse(v):null}catch(e){return null}}
+function lsSet(p,v){try{localStorage.setItem('vie:'+p,JSON.stringify(v))}catch(e){}}
+function setStatus(t){var el=document.getElementById('save-state'); if(el) el.textContent=t}
+function persist(path,body){
+  dirty[path]=true; lsSet(path,body); setStatus('Enregistrement…');
+  clearTimeout(timers[path]);
+  timers[path]=setTimeout(function(){
+    if(!db){dirty[path]=false; setStatus('Enregistré sur cette tablette'); return}
+    db.doc(path).set(body).then(function(){dirty[path]=false; setStatus('Enregistré')})
+      .catch(function(e){dirty[path]=false; setStatus(e&&e.code==='quota_exceeded'?'Mémoire pleine : je ne peux plus enregistrer':'Pas enregistré, réessaie dans un instant')});
+  },450);
+}
+function monthDays(mk){ if(!state.suivi[mk]){var s=lsGet('suivi/'+mk); state.suivi[mk]=s&&s.days?s.days:{}} return state.suivi[mk] }
+function dayRec(d){var mk=mkey(d), dd=pad(d.getDate()), days=monthDays(mk); days[dd]=days[dd]||{}; return days[dd]}
+function peekRec(d){return monthDays(mkey(d))[pad(d.getDate())]||{}}
+function watchMonth(mk){
+  monthDays(mk);
+  if(!db||subs['suivi/'+mk]) return;
+  subs['suivi/'+mk]=db.doc('suivi/'+mk).onSnapshot(function(s){
+    if(dirty['suivi/'+mk]) return;
+    var b=s.exists?s.data():null;
+    state.suivi[mk]=b&&b.days?JSON.parse(JSON.stringify(b.days)):{};
+    rerender();
+  },function(){});
+}
+function saveDay(d){persist('suivi/'+mkey(d),{days:state.suivi[mkey(d)]||{}})}
+function saveEtat(){persist('victoria/etat',state.etat)}
+function etat(g){state.etat[g]=state.etat[g]||{}; return state.etat[g]}
+
+/* ---------- Rendu : Accueil ---------- */
+var weekView=Math.min(7,Math.max(0,arcWeek(TODAY)));
+function renderAccueil(){
+  var k=key(TODAY), w=arcWeek(TODAY), h=NOW.getHours();
+  document.getElementById('hello').textContent=(h<18?'Bonjour':'Bonsoir')+' Victoria';
+  var st=document.getElementById('arc-status'), ct=document.getElementById('arc-count');
+  var toEnd=Math.round((fromKey(CYCLE_FIN)-TODAY)/86400000);
+  if(w<0){
+    var n=Math.round((ARC_START-TODAY)/86400000);
+    st.innerHTML='<strong>Il commence lundi 2 novembre.</strong><span class="soft">D\'ici là, je vis ma semaine sans rien rattraper. Samedi 31, mon premier meal prep avec mes nouvelles bases.</span>';
+    ct.innerHTML='<b class="num">'+n+'</b><span>jour'+(n>1?'s':'')+' avant le début</span>';
+  } else if(w<8){
+    var S=SEMAINES[w];
+    st.innerHTML='<strong>Semaine '+(w+1)+' sur 8'+(S.titre?' · '+esc(S.titre):'')+'</strong><span class="soft">Du '+weekRange(w)+', une action par pilier, rien de plus.</span>';
+    ct.innerHTML='<b class="num">'+toEnd+'</b><span>jour'+(toEnd>1?'s':'')+' jusqu\'à mon bilan du 27 décembre</span>';
+  } else {
+    st.innerHTML='<strong>Mon winter arc est terminé.</strong><span class="soft">Je relis mon journal. Le 4 janvier, je planifie mes prochains mois.</span>';
+    ct.innerHTML='';
+  }
+  /* 56 jours */
+  var g='<div class="g-row head"><span></span>'+['L','M','M','J','V','S','D'].map(function(x){return '<span>'+x+'</span>'}).join('')+'<span></span></div>';
+  for(var i=0;i<8;i++){
+    var done=0, total=0;
+    PILIERS.forEach(function(p){ if(SEMAINES[i][p.id]){ total++; if(etat('arc')['w'+(i+1)+'-'+p.id]) done++ } });
+    g+='<div class="g-row'+(i===w?' now':'')+'"><div class="g-lab"><b>S'+(i+1)+'</b><span>'+shortDate(key(addDays(ARC_START,i*7)))+'</span></div>';
+    for(var j=0;j<7;j++){
+      var d=addDays(ARC_START,i*7+j), dk=key(d), rec=peekRec(d), cls='dot';
+      if(rec.t) cls+=' done'; else if(dk<k) cls+=' past';
+      if(dk===k) cls+=' today';
+      g+='<span class="'+cls+'" title="'+JOURS[d.getDay()]+' '+d.getDate()+' '+MOIS[d.getMonth()]+(rec.t?' · tâche faite':'')+'"></span>';
+    }
+    g+='<span class="g-score num" title="Actions de la semaine">'+done+'/'+total+'</span></div>';
+  }
+  document.getElementById('grid56').innerHTML=g;
+  /* piliers */
+  var S2=SEMAINES[weekView];
+  document.getElementById('w-title').textContent='Semaine '+(weekView+1)+' · '+weekRange(weekView);
+  document.getElementById('w-prev').disabled=weekView===0;
+  document.getElementById('w-next').disabled=weekView===7;
+  document.getElementById('pillars').innerHTML=PILIERS.map(function(p){
+    var act=S2[p.id], id='w'+(weekView+1)+'-'+p.id, on=!!etat('arc')[id];
+    return '<div class="pillar"><div class="p-name">'+p.nom+'<small>'+esc(p.routine)+'</small></div><div class="p-body">'+
+      (act?'<button class="check" data-g="arc" data-id="'+id+'" aria-pressed="'+on+'"><span class="box">'+CHECK+'</span><span class="lbl">'+esc(act)+'</span></button>':'<p class="soft">Rien de prévu cette semaine.</p>')+
+      '<p class="p-goal"><b>Au 27 décembre :</b> '+esc(p.but)+'</p></div></div>';
+  }).join('');
+  var ex=document.getElementById('w-extra'); ex.hidden=!S2.extra; ex.textContent=S2.extra||'';
+  /* dates */
+  var next=DATES.filter(function(x){return x[0]>=k})[0];
+  document.getElementById('dates').innerHTML=DATES.map(function(x){
+    return '<div class="date-row'+(x[0]<k?' past':'')+(next&&x[0]===next[0]?' next':'')+'"><b>'+shortDate(x[0])+(x[0].slice(0,4)==='2027'?' 2027':'')+'</b><span>'+esc(x[1])+'</span></div>';
+  }).join('');
+  document.getElementById('later').innerHTML=LATER.map(function(b){return '<div><h3>'+b[0]+'</h3><ul>'+b[1].map(function(t){return '<li>'+esc(t)+'</li>'}).join('')+'</ul></div>'}).join('');
+}
+
+/* ---------- Rendu : Aujourd'hui ---------- */
+function toMin(t){var m=/^(\d{1,2})h(\d{2})?/.exec(t); return m?(+m[1])*60+(m[2]?+m[2]:0):null}
+function tagHtml(t){var lab={sport:'Sport',eglise:'Église',prep:'Cuisine',sante:'Santé'}[t]; return lab?'<span class="tag '+t+'">'+lab+'</span>':''}
+function renderJour(){
+  var d=TODAY, dow=d.getDay(), k=key(d);
+  document.getElementById('day-kicker').textContent=d.getDate()+' '+MOIS[d.getMonth()]+' '+d.getFullYear();
+  document.getElementById('day-title').textContent=JOURS[dow];
+  var items=dayItems(d), nowM=NOW.getHours()*60+NOW.getMinutes(), cur=-1;
+  items.forEach(function(it,i){var m=toMin(it[0]); if(m!=null&&m<=nowM) cur=i});
+  document.getElementById('timeline').innerHTML=items.map(function(it,i){
+    return '<div class="tl'+(i===cur?' now':'')+(i<cur?' done':'')+'"><div class="tl-time">'+esc(it[0])+'</div><div>'+esc(it[1])+tagHtml(it[2])+'</div></div>';
+  }).join('');
+  var rec=peekRec(d);
+  var inp=document.getElementById('tache'); if(document.activeElement!==inp) inp.value=rec.tache||'';
+  document.getElementById('t-done').setAttribute('aria-pressed',rec.t?'true':'false');
+  var sc=document.getElementById('sport-card'), sp=sportPlan(dow,k), s=sp.s;
+  sc.innerHTML=s?'<p class="small soft">Ma séance du jour · '+sp.time+'</p><p class="big">'+esc(s[0])+'</p><p class="small soft">'+esc(s[1])+(sp.note?'. '+esc(sp.note):'.')+' Le détail est dans Mon Coach.</p>'
+    :'<p class="small soft">Sport</p><p class="big">Repos de salle</p><p class="small soft">'+esc(sp.rest||'Pas de salle aujourd\'hui.')+'</p>';
+  var ev=eventsFor(d);
+  document.getElementById('rappels').innerHTML=ev.length?ev.map(function(e){return '<li>'+esc(e)+'</li>'}).join(''):'<li class="soft">Rien de spécial aujourd\'hui. Je suis ma journée, c\'est tout.</li>';
+}
+
+/* ---------- Rendu : Semaine ---------- */
+function renderSemaine(){
+  var dow=TODAY.getDay(), monday=addDays(TODAY,-((dow+6)%7)), tags={1:'Sport en bonus',2:'Maison, cuisine, Pu',3:'Sport, linge',4:'Jeûne, église',5:'Sport',6:'Reset, cuisine, sport',0:'Église, famille'};
+  document.getElementById('week-kicker').textContent='Du lundi '+monday.getDate()+' '+MOIS[monday.getMonth()]+' au dimanche '+addDays(monday,6).getDate()+' '+MOIS[addDays(monday,6).getMonth()];
+  var skip=['7h','8h','8h35','22h15','23h','23h30'];
+  document.getElementById('week').innerHTML=[0,1,2,3,4,5,6].map(function(i){
+    var d=addDays(monday,i), w=d.getDay();
+    var items=dayItems(d).filter(function(it){return skip.indexOf(it[0])<0});
+    return '<article class="wday'+(w===dow?' is-today':'')+'"><h3>'+JOURS[w]+' '+d.getDate()+'<span>'+tags[w]+'</span></h3><ul>'+
+      items.map(function(it){return '<li><b>'+esc(it[0])+'</b><span>'+esc(it[1])+'</span></li>'}).join('')+'</ul></article>';
+  }).join('');
+}
+
+/* ---------- Rendu : Routines ---------- */
+var routineSel=defaultRoutine();
+function renderRoutines(){
+  document.getElementById('seg').innerHTML=Object.keys(ROUTINES).map(function(id){return '<button type="button" data-r="'+id+'" aria-pressed="'+(id===routineSel)+'">'+ROUTINES[id].nom+'</button>'}).join('');
+  var R=ROUTINES[routineSel], d=routineDate(routineSel), items=R.items(d), rec=peekRec(d), r=(rec.r&&rec.r[routineSel])||{};
+  document.getElementById('r-title').textContent=R.nom;
+  document.getElementById('r-when').textContent=R.quand(d);
+  document.getElementById('r-list').innerHTML=items.map(function(x){
+    return '<li><button class="check" data-rt="'+routineSel+'" data-id="'+x.id+'" aria-pressed="'+(!!r[x.id])+'"><span class="box">'+CHECK+'</span><span class="lbl">'+esc(x.t)+'</span></button></li>';
+  }).join('');
+  var done=items.filter(function(x){return r[x.id]}).length, n=items.length, C=2*Math.PI*44, off=C*(1-(n?done/n:0));
+  document.getElementById('ring').innerHTML='<svg viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="44" fill="none" stroke="var(--line)" stroke-width="7"/><circle cx="50" cy="50" r="44" fill="none" stroke="var(--rose-strong)" stroke-width="7" stroke-linecap="round" stroke-dasharray="'+C.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'"/></svg><div class="ring-txt"><div><b class="num">'+done+'</b><small>sur '+n+'</small></div></div>';
+  document.getElementById('r-note').textContent=done===n&&n?'Tout est fait. Bravo.':(done?'Je continue, une chose après l\'autre.':'Une chose après l\'autre, sans courir.');
+  var T=etat('tri');
+  document.getElementById('tri').innerHTML=TRI.map(function(t){return '<li><button class="check" data-g="tri" data-id="'+t[0]+'" aria-pressed="'+(!!T[t[0]])+'"><span class="box">'+CHECK+'</span><span><span class="when">'+shortDate(t[0])+'</span><span class="lbl">'+esc(t[1])+'</span></span></button></li>'}).join('');
+  var td=TRI.filter(function(t){return T[t[0]]}).length;
+  document.getElementById('tri-bar').style.width=(td*10)+'%';
+  document.getElementById('tri-count').textContent=td+' zone'+(td>1?'s':'')+' sur 10';
+}
+
+/* ---------- Rendu : Mois ---------- */
+var view={month:new Date(TODAY.getFullYear(),TODAY.getMonth(),1)};
+function renderMois(){
+  var y=view.month.getFullYear(), m=view.month.getMonth(), mk=y+'-'+pad(m+1);
+  watchMonth(mk);
+  var days=monthDays(mk);
+  document.getElementById('m-title').textContent=MOIS[m].charAt(0).toUpperCase()+MOIS[m].slice(1)+' '+y;
+  var first=new Date(y,m,1), start=addDays(first,-((first.getDay()+6)%7)), n=dim(y,m);
+  var cells=['Lun','Mar','Mer','Jeu','Ven','Sam','Dim'].map(function(x){return '<div class="dow">'+x+'</div>'}).join('');
+  var weeks=Math.ceil((((first.getDay()+6)%7)+n)/7), cur=start;
+  for(var i=0;i<weeks*7;i++){
+    var inM=cur.getMonth()===m, dd=pad(cur.getDate()), rec=inM?(days[dd]||{}):{}, hasEv=inM&&eventsFor(cur).length>0;
+    cells+='<div class="cell'+(inM?'':' out')+(key(cur)===key(TODAY)?' is-today':'')+'"><div class="c-top"><span>'+cur.getDate()+'</span>'+(hasEv?'<i title="Un rappel ce jour-là"></i>':'')+'</div>'+
+      (inM?'<button class="c-t" data-d="'+dd+'" aria-pressed="'+(rec.t?'true':'false')+'" aria-label="Tâche faite le '+cur.getDate()+'">T</button>'+(rec.tache?'<span class="c-task">'+esc(rec.tache)+'</span>':''):'')+'</div>';
+    cur=addDays(cur,1);
+  }
+  document.getElementById('cal').innerHTML=cells;
+  var evs=[];
+  for(var j=1;j<=n;j++){var d2=new Date(y,m,j); eventsFor(d2).forEach(function(e){evs.push('<li><b>'+JOURS[d2.getDay()].slice(0,3)+'. '+j+'</b><span>'+esc(e)+'</span></li>')})}
+  document.getElementById('m-events').innerHTML=evs.join('')||'<li><b>—</b><span>Pas de rendez-vous particulier ce mois-ci.</span></li>';
+}
+
+/* ---------- Rendu : Soin de moi ---------- */
+function checkItem(g,id,label,when){
+  var on=!!etat(g)[id];
+  return '<li><button class="check" data-g="'+g+'" data-id="'+esc(id)+'" aria-pressed="'+on+'"><span class="box">'+CHECK+'</span><span>'+(when?'<span class="when">'+esc(when)+'</span>':'')+'<span class="lbl">'+esc(label)+'</span></span></button></li>';
+}
+function renderSoin(){
+  document.getElementById('questions').innerHTML=
+    checkItem('sante','transit','« Mon transit est irrégulier : qu\'est-ce que je peux faire ? »')+
+    checkItem('sante','b9','« Mes folates (B9) étaient bas en août. Est-ce que je dois prendre un traitement ? »')+
+    checkItem('sante','bilan','« Je voudrais une prise de sang de contrôle avec ferritine et folates. »')+
+    checkItem('sante','cycles','« Mes cycles sont irréguliers : on m\'a conseillé une sage-femme, qu\'en pensez-vous ? »');
+  document.getElementById('rdv').innerHTML=
+    checkItem('sante','compo','Refaire ma composition corporelle (mêmes conditions que le 31 août)','Avant le 2 novembre')+
+    checkItem('sante','generaliste_rdv','Prendre rendez-vous chez le généraliste (pocket Santé 30 €)','Semaine 1')+
+    checkItem('sante','generaliste','Rendez-vous chez le généraliste : mes 4 questions','Novembre')+
+    checkItem('sante','prisedesang','Prise de sang de contrôle, 2 mois après mes perfusions','Fin décembre')+
+    checkItem('sante','diagnostic','Diagnostic de peau gratuit, en boutique ou en pharmacie','Semaine 5')+
+    checkItem('sante','sagefemme_rdv','Sage-femme pour mes cycles, quand mon budget le permet','Plus tard')+
+    checkItem('sante','dermato','Rendez-vous chez le dermatologue','Mars · avril 2027');
+  document.getElementById('probio').hidden=key(TODAY)>'2026-11-09';
+  var d=new Date(TODAY); for(var i=0;i<15;i++){ if(hairDay(key(d))) break; d=addDays(d,1) }
+  document.getElementById('hair-next').innerHTML=key(d)===key(TODAY)?'<strong>C\'est aujourd\'hui</strong>, à 9h.':'Prochain soin : <strong>samedi '+d.getDate()+' '+MOIS[d.getMonth()]+'</strong>.';
+}
+
+/* ---------- Navigation ---------- */
+var TABS=['accueil','jour','semaine','routines','mois','soin'], current='accueil';
+function rerender(){
+  document.getElementById('today-label').textContent=JOURS[TODAY.getDay()]+' '+TODAY.getDate()+' '+MOIS[TODAY.getMonth()];
+  ({accueil:renderAccueil,jour:renderJour,semaine:renderSemaine,routines:renderRoutines,mois:renderMois,soin:renderSoin,backup:function(){}})[current]();
+}
+function show(id){
+  current=id;
+  TABS.forEach(function(t){ document.getElementById('t-'+t).setAttribute('aria-selected',t===id?'true':'false') });
+  TABS.concat(['backup']).forEach(function(t){ document.getElementById('p-'+t).hidden=t!==id });
+  try{localStorage.setItem('vie:tab',id)}catch(e){}
+  rerender(); window.scrollTo(0,0);
+  var sel=document.getElementById('t-'+id); if(sel&&window.innerWidth<=860){try{sel.scrollIntoView({inline:'center',block:'nearest'})}catch(e){}}
+}
+
+/* ---------- Événements ---------- */
+document.querySelector('.tabs').addEventListener('click',function(e){var b=e.target.closest('.tab'); if(b) show(b.id.slice(2))});
+document.getElementById('go-backup').addEventListener('click',function(){show('backup')});
+document.getElementById('w-prev').addEventListener('click',function(){if(weekView>0){weekView--; renderAccueil()}});
+document.getElementById('w-next').addEventListener('click',function(){if(weekView<7){weekView++; renderAccueil()}});
+document.getElementById('seg').addEventListener('click',function(e){var b=e.target.closest('button[data-r]'); if(b){routineSel=b.dataset.r; renderRoutines()}});
+document.getElementById('t-done').addEventListener('click',function(){var r=dayRec(TODAY); r.t=!r.t; this.setAttribute('aria-pressed',r.t?'true':'false'); saveDay(TODAY)});
+document.getElementById('tache').addEventListener('input',function(e){dayRec(TODAY).tache=e.target.value.slice(0,140); saveDay(TODAY)});
+document.getElementById('cal').addEventListener('click',function(e){
+  var b=e.target.closest('button[data-d]'); if(!b) return;
+  var d=new Date(view.month.getFullYear(),view.month.getMonth(),+b.dataset.d), r=dayRec(d); r.t=!r.t; saveDay(d); renderMois();
+});
+document.getElementById('m-prev').addEventListener('click',function(){view.month=new Date(view.month.getFullYear(),view.month.getMonth()-1,1); renderMois()});
+document.getElementById('m-next').addEventListener('click',function(){view.month=new Date(view.month.getFullYear(),view.month.getMonth()+1,1); renderMois()});
+document.addEventListener('click',function(e){
+  var b=e.target.closest('.check'); if(!b) return;
+  if(b.dataset.rt){
+    var d=routineDate(b.dataset.rt), r=dayRec(d); r.r=r.r||{}; r.r[b.dataset.rt]=r.r[b.dataset.rt]||{};
+    var o=r.r[b.dataset.rt]; o[b.dataset.id]=!o[b.dataset.id]; saveDay(d); renderRoutines(); return;
+  }
+  if(b.dataset.g){var g=etat(b.dataset.g); g[b.dataset.id]=!g[b.dataset.id]; saveEtat(); rerender()}
+});
+
+/* ---------- Sauvegarde ---------- */
+function bkData(){
+  var keys={};
+  try{for(var i=0;i<localStorage.length;i++){var kk=localStorage.key(i); if(kk&&kk.indexOf('vie:')===0&&kk!=='vie:tab') keys[kk]=localStorage.getItem(kk)}}catch(e){}
+  return JSON.stringify({app:'ma-vie',date:new Date().toISOString(),keys:keys});
+}
+function bkMsg(t){document.getElementById('bk-msg').innerHTML=t}
+var bkPending=null;
+function bkRestore(txt){
+  var data; try{data=JSON.parse(txt)}catch(e){bkMsg('Ce texte n\'est pas une sauvegarde de Ma vie. Vérifie que tu as tout copié.');return}
+  if(!data||data.app!=='ma-vie'||!data.keys){bkMsg('Ce texte n\'est pas une sauvegarde de Ma vie. Vérifie que tu as tout copié.');return}
+  bkPending=data;
+  bkMsg('Remplacer les données de cette tablette par la sauvegarde du '+esc(String(data.date||'').slice(0,10))+' ? <br><button class="btn" id="bk-yes" type="button" style="margin-top:10px">Oui, remplacer</button>');
+}
+document.getElementById('backup').addEventListener('click',function(e){
+  var id=e.target&&e.target.id;
+  if(id==='bk-dl'){
+    var blob=new Blob([bkData()],{type:'application/json'}), a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='ma-vie-sauvegarde-'+key(new Date())+'.json';
+    document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){URL.revokeObjectURL(a.href)},2000);
+    bkMsg('Sauvegarde téléchargée.');
+  } else if(id==='bk-cp'){
+    var txt=bkData(), t=document.getElementById('bk-text');
+    var ok=function(){bkMsg('Sauvegarde copiée : colle-la dans tes Notes.')};
+    var fb=function(){t.value=txt; t.select(); try{document.execCommand('copy'); ok()}catch(err){bkMsg('Copie le texte affiché dans la case.')}};
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok,fb); else fb();
+  } else if(id==='bk-file-btn'){
+    document.getElementById('bk-file').click();
+  } else if(id==='bk-restore'){
+    bkRestore(document.getElementById('bk-text').value);
+  } else if(id==='bk-yes'&&bkPending){
+    Object.keys(bkPending.keys).forEach(function(kk){if(kk.indexOf('vie:')===0){try{localStorage.setItem(kk,bkPending.keys[kk])}catch(err){}}});
+    location.reload();
+  }
+});
+document.getElementById('bk-file').addEventListener('change',function(e){
+  var f=e.target.files&&e.target.files[0]; if(!f) return;
+  var r=new FileReader(); r.onload=function(){bkRestore(r.result)}; r.readAsText(f); e.target.value='';
+});
+
+/* ---------- Démarrage ---------- */
+var saved=lsGet('victoria/etat'); if(saved) state.etat=Object.assign(state.etat,saved);
+var startTab='accueil'; try{var st=localStorage.getItem('vie:tab'); if(st&&TABS.indexOf(st)>=0) startTab=st}catch(e){}
+var hash=(location.hash||'').replace('#',''); if(TABS.indexOf(hash)>=0) startTab=hash;
+show(startTab);
+var sync=document.getElementById('sync');
+(async function(){
+  try{ db=window.claude&&window.claude.use?await window.claude.use('db'):null }catch(e){db=null}
+  if(!db){ sync.textContent='Gardé sur cette tablette. Pense à ta sauvegarde le dimanche.'; return }
+  sync.textContent='Mes coches sont aussi sauvegardées en ligne.';
+  db.doc('victoria/etat').onSnapshot(function(s){
+    if(dirty['victoria/etat']) return;
+    if(s.exists){var b=s.data(); state.etat=Object.assign({tri:{},sante:{},mariage:{},arc:{}},JSON.parse(JSON.stringify(b)))}
+    rerender();
+  },function(){});
+  [TODAY,addDays(TODAY,7),ARC_START,fromKey('2026-12-01')].forEach(function(d){watchMonth(mkey(d))});
+})();
+})();
+</script>
+
+</body></html>
